@@ -7,7 +7,22 @@ import {
   FaChevronRight,
 } from 'react-icons/fa6';
 
+import { MdInbox } from 'react-icons/md';
+
+import { GoTag } from 'react-icons/go';
+
+import { FaUserFriends } from 'react-icons/fa';
+
+import { PiWarningCircleLight } from 'react-icons/pi';
+
 export default function Inbox() {
+  const [currentOption, setCurrentOption] = React.useState(0);
+  const data = [
+    {name:"Primary",icon:<MdInbox size={14}/>,number:1674},
+    { name: "Promotions", icon: <PiWarningCircleLight size={14} />, number: 0 },
+    {name:"Social",icon:<FaUserFriends size={14}/>,number:0},
+    { name: "Updates", icon: <GoTag size={14} />, number: 0 },
+  ]
   return (
     <div className="bg-red-200 w-[calc(100vw-75.5px)] h-full flex flex-col ml-[76px]">
       <div className="w-full h-[48px] bg-gray-300 flex items-center justify-between">
@@ -42,18 +57,36 @@ export default function Inbox() {
         </div>
       </div>
       <div className="w-full h-[56px] flex bg-green-100">
-        <div className="h-full w-[256px] flex items-center bg-gray-100">
-          <div className='w-[56px] h-full bg-cyan-100'></div>
-        </div>
-        <div className="h-full w-[256px] flex items-center bg-blue-100">
-          <div className='w-[56px] h-full bg-cyan-100'></div>
-        </div>
-        <div className="h-full w-[256px] flex items-center bg-red-100">
-          <div className='w-[56px] h-full bg-cyan-100'></div>
-        </div>
-        <div className="h-full w-[256px] flex items-center bg-pink-100">
-          <div className='w-[56px] h-full bg-cyan-100'></div>
-        </div>
+        
+        {
+          data.map((element,index)=>{
+            return (
+              <div
+                key={index}
+                className="h-full w-[256px] cursor-pointer flex items-center bg-gray-100 hover:bg-gray-200"
+                onClick={() => setCurrentOption(index)}
+              >
+                <div
+                  className={`w-[90%] h-full flex ${
+                    currentOption === index ? 'border-b-4 border-[#0B57D0]' : ''
+                  }`}
+                >
+                  <div className="w-[56px] h-full flex items-center justify-center">
+                    <MdInbox size={20} fill={currentOption === index ? '#0B57D0' : '#000000'} />
+                  </div>
+                  <div
+                    className={`w-[calc(100%-56px)] h-full flex items-center ${
+                      currentOption === index ? 'text-[#0B57D0]' : ''
+                    }`}
+                  >
+                    {element.name}
+                  </div>
+                </div>
+              </div>
+            );
+          })
+        }
+        
       </div>
       <div></div>
     </div>
