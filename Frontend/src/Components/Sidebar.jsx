@@ -2,7 +2,7 @@ import React from 'react';
 import { FaClock, FaFile, FaInbox, FaPaperPlane, FaPencil, FaStar } from 'react-icons/fa6';
 import { Link } from 'react-router';
 
-export default function Sidebar() {
+export default function Sidebar({ showCompose, setShowCompose }) {
   const data = [
     { name: 'Inbox', icon: <FaInbox size={14} />, number: 1674 },
     { name: 'Starred', icon: <FaStar size={14} />, number: 0 },
@@ -40,13 +40,14 @@ export default function Sidebar() {
 
   return (
     <div
-      className="bg-[#fff]  w-[75.5px] h-[calc(100vh-61px)] flex flex-col gap-1 absolute left-0 transition-all duration-200 delay-200 hover:w-[240px]"
+      className="bg-[#fff] w-[75.5px] h-[calc(100vh-61px)] flex flex-col gap-1 fixed z-20 left-0 transition-all duration-200 delay-200 hover:w-[240px]"
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
     >
       <div
         className="max-w-[56px] h-[56px] ml-[10px] rounded-[16px] bg-[#c2e7ff] flex overflow-hidden transition-all duration-200 delay-200"
         ref={ref1}
+        onClick={() => setShowCompose(true)}
       >
         <div className="min-w-[56px] h-[56px]  rounded-[16px] flex items-center justify-center">
           <FaPencil size={18} />
