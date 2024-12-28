@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-export default function Navbar() {
+export default function Navbar({ showLogin, setShowLogin }) {
   return (
     <div className="w-full h-[61px] flex items-center justify-center bg-[#fff]">
       <div className="w-[98.5%] h-[47px] flex">
@@ -85,7 +85,7 @@ export default function Navbar() {
             </svg>
           </div>
           <div className="w-[48px] h-[48px] flex items-center justify-center ">
-            <div className="w-[34px] h-[34px] flex items-center justify-center bg-blue-200 rounded-full hover:bg-gray-200  rounded-full "></div>
+            <div className="w-[34px] h-[34px] flex items-center justify-center bg-blue-200 hover:bg-gray-200  rounded-full " onClick={()=>setShowLogin(true)}></div>
           </div>
         </div>
       </div>

@@ -9,16 +9,18 @@ import Draft from './Components/Draft';
 import Home from './Components/Home';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import MailBody from './Components/MailBody';
+import Login from './Components/Login';
 
 export default function App() {
   const [showCompose, setShowCompose] = React.useState(false);
+  const [showLogin, setShowLogin] = React.useState(false);
 
   return (
     <div className="">
       <BrowserRouter>
         <div className="flex flex-col relative">
           <div className="w-full h-[61px] sticky z-20 top-0 left-0">
-            <Navbar />
+            <Navbar showLogin={showLogin} setShowLogin={setShowLogin} />
           </div>
           <div className="flex pt-2">
             <Sidebar showCompose={showCompose} setShowCompose={setShowCompose} />
@@ -35,6 +37,7 @@ export default function App() {
         </div>
       </BrowserRouter>
       <Sent showCompose={showCompose} setShowCompose={setShowCompose} />
+      <Login showLogin={showLogin} setShowLogin={setShowLogin} />
     </div>
   );
 }
